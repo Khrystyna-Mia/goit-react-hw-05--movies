@@ -2,8 +2,11 @@ import { useEffect } from 'react';
 import { addBackToTop } from 'vanilla-back-to-top';
 
 import Container from './Container';
-import Footer from './Footer';
 import Header from './Header';
+import Footer from './Footer';
+import { Route, Routes } from 'react-router-dom';
+import NotFoundMovies from 'views/NotFoundMovies';
+import HomePage from 'views/HomePage';
 
 const App = () => {
   useEffect(() => {
@@ -41,6 +44,11 @@ const App = () => {
   return (
     <Container>
       <Header />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFoundMovies />} />
+      </Routes>
 
       <Footer />
     </Container>
