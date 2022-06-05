@@ -1,0 +1,30 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  min-height: 30px;
+  padding: 20px 0;
+
+  color: var(--primary-text-color);
+  background-color: var(--bg-hf-color);
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyrightText {
+  display: flex;
+  align-items: center;
+
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.icon {
+  margin: 0 10px;
+}
