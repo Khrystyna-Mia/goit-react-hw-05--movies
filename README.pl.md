@@ -1,106 +1,68 @@
-**Read in other languages: [rosyjski](README.md), [polski](README.pl.md).**
+**Czytaj w innych językach: [rosyjski](README.md), [ukraiński](README.ua.md).**
 
-# React homework template
+Użyj tego
+[szablonu projektu React](https://github.com/goitacademy/react-homework-template#readme)
+jako punktu wyjścia dla swojej aplikacji.
 
-Ten projekt został stworzony przy pomocy
-[Create React App](https://github.com/facebook/create-react-app). W celu
-zapoznania się z ustawieniami dodatkowych opcji
-[zobacz dokumentację](https://facebook.github.io/create-react-app/docs/getting-started).
+# Kryteria zaliczenia
 
-## Przygotowanie nowego projektu
+- Stworzone repozytorium `goit-react-hw-05-movies`.
+- W oddawanym zadaniu domowym są odnośniki: do oryginalnych plików i strony
+  roboczej każdego projektu na `Netlify`.
+- W stanie komponentów przechowywany jest minimalny niezbędny zestaw danych,
+  pozostałe są obliczane.
+- Po włączeniu kodu zadania, na konsoli nie ma błędów i ostrzeżeń.
+- Dla każdego komponentu stworzony został folder z plikiem komponentu React i
+  plikiem stylów.
+- Dla komponentu opisane są `propTypes`.
+- Wszystko, czego komponent żąda w postaci propsów, przekazuje się do niego przy
+  wywołaniu.
+- Nazwy komponentów są zrozumiałe, opisowe.
+- Kod JS jest czysty i zrozumiały, wykorzystuje się `Prettier`.
+- Stylizacja wykonania `CSS-modułami` lub `Styled Components`.
 
-1. Upewnij się, że na komputerze zainstalowana jest wersja LTS Node.js.
-   [Ściągnij i zainstaluj](https://nodejs.org/en/), jeżeli trzeba.
-2. Sklonuj to repozytorium.
-3. Zmień nazwę folderu z `react-homework-template` na nazwę swojego projektu.
-4. Utwórz nowe, puste repozytorium na GitHub.
-5. Otwórz projekt w VSCode, włącz terminal i połącz projekt z repozytorium
-   GitHub
-   [zgodnie z instrukcją](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Utwórz bazowe zależności projektu przy pomocy polecenia `npm install`.
-7. Włącz tryb pracy, wykonując polecenie `npm start`.
-8. Przejdź w przeglądarce pod adres
-   [http://localhost:3000](http://localhost:3000). Ta strona będzie
-   automatycznie przeładowywać się po zapisaniu zmian w plikach projektu.
+## Zadanie "Wyszukiwanie filmów"
 
-## Deployment
+Stwórz bazowe trasowanie dla aplikacji do wyszukiwania i zapisywania filmów.
+Preview roboczej aplikacji
+[zobacz link](https://drive.google.com/file/d/1vR0hi3n1236Q5Bg4-se-8JVKD9UKSfId/view?usp=sharing).
 
-Aby skonfigurować wdrożenie projektu, należy wykonać kilka dodatkowych kroków
-w celu skonfigurowania repozytorium. Przejdź do zakładki `Settings` i w podsekcji
-`Actions` wybierz wybierz pozycję `General`.
+## API themoviedb.org
 
-![GitHub actions settings](./assets/actions-config-step-1.png)
+Do backendu wykorzystaj [themoviedb.org API](https://www.themoviedb.org/).
+Należy się zarejestrować (można wprowadzić dowolne dane) i pobrać klucz API. W
+tym zadaniu będzie się wykorzystywać następujące endpointy.
 
-Przewiń stronę w dół do ostatniej sekcji, a następnie wybierz opcje tak jak pokazano poniżej i kliknij `Save`. Bez tych ustawień zespół nie będzie miał uprawnień, aby zautomatyzować proces wdrażania.
+- [/trending/get-trending](https://developers.themoviedb.org/3/trending/get-trending)
+  lista najpopularniejszych filmów dzisiaj w celu utworzenia kolekcji na stronie
+  głównej.
+- [/search/search-movies](https://developers.themoviedb.org/3/search/search-movies)
+  wyszukiwanie filmu po słowie kluczu na stronie filmów.
+- [/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details)
+  zapytanie o pełną informację o filmie dla strony filmu.
+- [/movies/get-movie-credits](https://developers.themoviedb.org/3/movies/get-movie-credits)
+  zapytanie o informację o zespole aktorskim dla strony filmu.
+- [/movies/get-movie-reviews](https://developers.themoviedb.org/3/movies/get-movie-reviews)
+  zapytanie o recenzje dla strony filmu.
 
-![GitHub actions settings](./assets/actions-config-step-2.png)
+[Link do dokumentacji](https://developers.themoviedb.org/3/getting-started/introduction)
 
-Produkcyjna wersja projektu będzie automatycznie poddana pracy lintera, budowana
-i deployowana na GitHub Pages, w gałęzi `gh-pages` za każdym razem, gdy
-aktualizuje się gałąź `main`, na przykład po bezpośrednim pushu lub przyjętym
-pull requeście. W tym celu należy w pliku `package.json` zredagować pole
-`homepage`, zamieniając `your_username` i `your_repo_name` na swoje nazwy i
-wysłać zmiany do GitHub.
+## Trasy
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+W aplikacji powinny znaleźć się następujące trasy. Jeśli użytkownik poszedł
+nieistniejącą trasą, należy przekierować go na stronę główną.
 
-Następnie należy przejść do ustawień repozytorium GitHub (`Settings` > `Pages`)
-i wydystrybuować wersję produkcyjną plików z folderu `/root` gałęzi `gh-pages`,
-jeśli nie zostało to wykonane automatycznie.
+- `'/'` - komponent `<HomePage>`, strona domowa z listą popularnych filmów.
+- `'/movies'` - komponent `<MoviesPage>`, strona wyszukiwania filmów po słowie
+  kluczu.
+- `'/movies/:movieId'` - komponent `<MovieDetailsPage>`, strona ze szczegółowymi
+  informacjami o filmie.
+- `/movies/:movieId/cast` - komponent `<Cast>`, informacja o zespole aktorskim.
+  Renderuje się na stronie `<MovieDetailsPage>`.
+- `/movies/:movieId/reviews` - komponent `<Reviews>`, informacja o recenzjach.
+  Renderuje się n stronie `<MovieDetailsPage>`.
 
-![GitHub Pages settings](./assets/repo-settings.png)
+## Code Splitting (rozdzielenie kodu)
 
-### Status deploymentu
-
-Status deploymentu ostatniego commitu wyświetla się jako ikona obok jego
-identyfikatora.
-
-- **Żółty kolor** - wykonuje się zbudowanie i deployment projektu.
-- **Zielony kolor** - deploymnt zakończył się sukcesem.
-- **Czerwony kolor** - podczas pracy lintera, budowania lub deploymentu wystąpił
-  błąd.
-
-Bardziej szczegółowe informacje o statusie można zobaczyć po kliknięciu na
-ikonkę i przejściu w wyskakującym oknie do odnośnika `Details`.
-
-![Deployment status](./assets/status.png)
-
-### Deployowana strona
-
-Po jakimś czasie, zazwyczaj kilku minut, zdeployowaną stronę będzie można
-zobaczyć pod adresem wskazanym w zredagowanej właściwości `homepage`. Tutaj na
-przykład znajduje się odnośnik do zdeployowanej strony w wersji dla tego
-repozytorium
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Jeżeli otwiera się pusta strona, upewnij się, że w zakładce `Console` nie ma
-błędów związanych z nieprawidłowymi ścieżkami do plików CSS i JS projektu
-(**404**). Najprawdopodobniej wprowadzona została niewłaściwa wartość
-właściwości `homepage` w pliku `package.json`.
-
-### Trasowanie
-
-Jeżeli aplikacja wykorzystuje bibliotekę `react-router-dom` dla trasowania,
-należy uzupełniająco skonfigurować komponent `<BrowserRouter>`, przekazując w
-propsie `basename` dokładną nazwę twojego repozytorium. Slash na początku i na
-końcu łańcucha jest obowiązkowy.
-
-```jsx
-<BrowserRouter basename="/your_repo_name/">
-  <App />
-</BrowserRouter>
-```
-
-## Jak to działa
-
-![How it works](./assets/how-it-works.png)
-
-1. Po każdym pushu do gałęzi `main` repozytorium GitHub, uruchamia się specjalny
-   skrypt (GitHub Action) z pliku `.github/workflows/deploy.yml`.
-2. Wszystkie pliki repozytorium kopiują się na serwer, gdzie projekt zostaje
-   zainicjowany i przechodzi pracę lintera oraz zbudowanie przed deploymentem.
-3. Jeżeli wszystkie kroki zakończyły się sukcesem, zbudowana wersja produkcyjna
-   plików projektu wysyłana jest do gałęzi `gh-pages`. W przeciwnym razie, w
-   logu wykonania skryptu zostanie wskazane z czym jest problem.
+Dodaj asynchroniczne ładownie kodu JS dla tras aplikacji, wykorzystując
+`React.lazy()` i `Suspense`.
