@@ -1,12 +1,18 @@
-import { useEffect, useState } from 'react';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Suspense, useEffect, useState } from 'react';
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { TiArrowBack } from 'react-icons/ti';
 
 import * as apiMovies from '../../services/apiMovies';
 
 import Loader from 'components/Loader';
 import ErrorMessage from 'components/ErrorMessage';
-// import noFoundImage from '../../images/no-image.jpg';
+import noFoundImage from '../../images/no-image.jpg';
 
 import s from './MovieDetailsPage.module.css';
 
@@ -28,7 +34,7 @@ const MovieDetailsPage = () => {
         setMovie({
           src: poster_path
             ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : `&{noFoundImage}`,
+            : `${noFoundImage}`,
           title: original_title,
           score: popularity,
           overview,
@@ -106,6 +112,10 @@ const MovieDetailsPage = () => {
               </li>
             </ul>
           </div>
+
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </main>

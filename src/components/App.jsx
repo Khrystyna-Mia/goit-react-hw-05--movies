@@ -1,14 +1,38 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { addBackToTop } from 'vanilla-back-to-top';
 import { Route, Routes } from 'react-router-dom';
 
 import Container from './Container';
 import Header from './Header';
 import Footer from './Footer';
-import NotFoundMovies from 'views/NotFoundMovies';
-import HomePage from 'views/HomePage';
-import MoviesPage from 'views/MoviesPage';
-import MovieDetailsPage from 'views/MovieDetailsPage';
+
+const HomePage = lazy(() =>
+  import('../views/HomePage' /* webpackChunkName: "home-page" */)
+);
+
+const MoviesPage = lazy(() =>
+  import('../views/MoviesPage' /* webpackChunkName: "movies-page" */)
+);
+
+const MovieDetailsPage = lazy(() =>
+  import(
+    '../views/MovieDetailsPage' /* webpackChunkName: "moviedetails-page" */
+  )
+);
+
+const Cast = lazy(() =>
+  import('../views/Cast' /* webpackChunkName: "cast-page" */)
+);
+
+const Reviews = lazy(() =>
+  import('../views/Reviews' /* webpackChunkName: "reviews-page" */)
+);
+
+const NotFoundMovies = lazy(() =>
+  import(
+    '../views/NotFoundMovies' /* webpackChunkName: "notfoundmovies-page" */
+  )
+);
 
 const App = () => {
   useEffect(() => {
@@ -47,12 +71,21 @@ const App = () => {
     <Container>
       <Header />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
-        <Route path="*" element={<NotFoundMovies />} />
-      </Routes>
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+
+          <Route path="/movies" element={<MoviesPage />} />
+
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<Cast />} />
+
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+
+          <Route path="*" element={<NotFoundMovies />} />
+        </Routes>
+      </Suspense>
 
       <Footer />
     </Container>
