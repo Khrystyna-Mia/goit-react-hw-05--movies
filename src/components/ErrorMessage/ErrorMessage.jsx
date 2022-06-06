@@ -5,7 +5,7 @@ import s from './ErrorMessage.module.css';
 const ErrorMessage = ({ message }) => {
   return (
     <div role="alert" className={s.content}>
-      <img src={errorImg} width="400" alt="not found" className={s.img} />
+      <img src={errorImg} width="600" alt="not found" className={s.img} />
 
       <p text={message} className={s.text}>
         {message}
