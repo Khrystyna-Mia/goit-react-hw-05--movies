@@ -8,6 +8,7 @@ import Footer from './Footer';
 import NotFoundMovies from 'views/NotFoundMovies';
 import HomePage from 'views/HomePage';
 import MoviesPage from 'views/MoviesPage';
+import MovieDetailsPage from 'views/MovieDetailsPage';
 
 const App = () => {
   useEffect(() => {
@@ -49,6 +50,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
         <Route path="*" element={<NotFoundMovies />} />
       </Routes>
 
