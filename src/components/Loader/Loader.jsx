@@ -1,4 +1,4 @@
-import { RingLoader } from 'react-spinners/RingLoader';
+import RingLoader from 'react-spinners/RingLoader';
 import s from './Loader.module.css';
 
 const Loader = () => {
