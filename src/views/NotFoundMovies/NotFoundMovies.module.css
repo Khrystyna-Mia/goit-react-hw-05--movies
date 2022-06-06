@@ -1,7 +1,5 @@
 .wrapper {
-  padding: 50px 0;
-
-  text-align: center;
+  padding: 40px 0;
 }
 
 .img {
@@ -9,10 +7,11 @@
 }
 
 .text {
-  margin-top: 20px;
+  margin-top: 40px;
 
   font-weight: 600;
   font-size: 26px;
+  text-align: center;
 
   color: var(--error-color);
 }
