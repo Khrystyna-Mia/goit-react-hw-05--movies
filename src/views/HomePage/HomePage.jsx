@@ -37,7 +37,7 @@ const HomePage = () => {
 
       {status === 'pending' && <Loader />}
 
-      {status === 'rejerect' && <ErrorMessage message={error.message} />}
+      {status === 'rejected' && <ErrorMessage message={error.message} />}
 
       {status === 'resolved' && (
         <>
