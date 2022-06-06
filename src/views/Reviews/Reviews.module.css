@@ -1,0 +1,26 @@
+.item {
+  text-align: center;
+
+  padding: 20px 0;
+}
+
+.author {
+  margin-bottom: 6px;
+
+  font-size: 18px;
+  letter-spacing: 0.02em;
+
+  color: var(--pink);
+}
+
+.content {
+  text-align: justify;
+
+  letter-spacing: 0.1em;
+
+  color: var(--primary-text-color);
+}
+
+.content::first-letter {
+  margin-right: 20px;
+}

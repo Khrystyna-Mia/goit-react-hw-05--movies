@@ -1,0 +1,51 @@
+.cast {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+
+  margin-right: -30px;
+  margin-left: -30px;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  flex-basis: calc(100% / 4 - 30px);
+
+  margin-top: 30px;
+  margin-left: 30px;
+  padding: 10px;
+
+  border-radius: 6px;
+}
+
+.name {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 0.2em;
+
+  color: var(--secondary-text-color);
+}
+
+.character {
+  margin: 0;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 0.02em;
+
+  color: var(--black-color);
+}
+
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 0.02em;
+
+  color: var(--primary-text-color);
+}
