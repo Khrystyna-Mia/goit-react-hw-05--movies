@@ -60,7 +60,7 @@ const MovieDetailsPage = () => {
 
       {status === 'pending' && <Loader />}
 
-      {status === 'rejected' && <ErrorMessage message={error.message} />}
+      {status === 'rejected' && <ErrorMessage message={error} />}
 
       {status === 'resolved' && (
         <>
