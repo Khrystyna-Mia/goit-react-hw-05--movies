@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaSearch } from 'react-icons/fa';
+import { Notify } from 'notiflix';
 import s from './SearchBar.module.css';
 
 const SearchBar = ({ onSubmit }) => {
@@ -12,6 +13,14 @@ const SearchBar = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (inputValue === '') {
+      Notify.info('🙄 PLEASE, ENTER THE TITLE OF THE MOVIE!', {
+        position: 'center-center',
+        width: '500px',
+        fontSize: '20px',
+      });
+    }
 
     onSubmit(inputValue);
     setInputValue('');

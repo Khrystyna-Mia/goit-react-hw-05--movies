@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Notify } from 'notiflix';
 import ShowMore from 'react-simple-show-more';
 
 import * as apiMovies from '../../services/apiMovies';
@@ -23,6 +24,11 @@ const Reviews = () => {
       .fetchMovieReviews(movieId)
       .then(({ results }) => {
         if (results.length === 0) {
+          Notify.failure('WE DONT HAVE ANY REWIEWS FOR THIS MOVIES😕', {
+            cssAnimation: 'center-center',
+            width: '500px',
+            fontSize: '20px',
+          });
           setStatus('idle');
           return;
         }
@@ -39,13 +45,15 @@ const Reviews = () => {
     <>
       {status === 'pending' && <Loader />}
 
-      {status === 'rejected' && <ErrorMessage message={error.message} />}
+      {status === 'rejected' && <ErrorMessage message={error} />}
 
       {status === 'resolved' && (
         <ul>
           {reviews.map(({ id, author, content }) => (
             <li className={s.item} key={id}>
-              <h3 className={s.author}>Author: {author}</h3>
+              <h3 className={s.author}>
+                Author: <span className={s.text}>{author}</span>
+              </h3>
 
               <p className={s.content}>
                 <ShowMore

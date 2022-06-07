@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Notify } from 'notiflix';
 
 import * as apiMovies from '../../services/apiMovies';
 
@@ -23,6 +24,11 @@ const Cast = () => {
       .fetchMovieCredits(movieId)
       .then(({ cast }) => {
         if (cast.length === 0) {
+          Notify.failure('WE DONT HAVE ANY CAST FOR THIS MOVIES😕', {
+            position: 'center-center',
+            width: '500px',
+            fontSize: '20px',
+          });
           setStatus('idle');
           return;
         }
@@ -39,10 +45,10 @@ const Cast = () => {
     <>
       {status === 'pending' && <Loader />}
 
-      {status === 'rejected' && <ErrorMessage message={error.message} />}
+      {status === 'rejected' && <ErrorMessage message={error} />}
 
       {status === 'resolved' && (
-        <ul className={s.cast}>
+        <ul className={s.list}>
           {cast.map(({ id, profile_path, original_name, character }) => (
             <li className={s.item} key={id}>
               <img
@@ -52,13 +58,12 @@ const Cast = () => {
                     : noFoundImage
                 }
                 alt={original_name}
+                className={s.photo}
               />
 
               <h3 className={s.name}>{original_name}</h3>
 
-              <p className={s.character}>
-                Character: <span className={s.text}>{character}</span>
-              </p>
+              <p className={s.character}>{character}</p>
             </li>
           ))}
         </ul>
