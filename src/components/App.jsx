@@ -28,11 +28,11 @@ const Reviews = lazy(() =>
   import('../views/Reviews' /* webpackChunkName: "reviews-page" */)
 );
 
-const NotFoundMovies = lazy(() =>
-  import(
-    '../views/NotFoundMovies' /* webpackChunkName: "notfoundmovies-page" */
-  )
-);
+// const NotFoundMovies = lazy(() =>
+//   import(
+//     '../views/NotFoundMovies' /* webpackChunkName: "notfoundmovies-page" */
+//   )
+// );
 
 const App = () => {
   useEffect(() => {
@@ -83,7 +83,7 @@ const App = () => {
             <Route path="reviews" element={<Reviews />} />
           </Route>
 
-          <Route path="*" element={<NotFoundMovies />} />
+          {/* <Route path="*" element={<NotFoundMovies />} /> */}
         </Routes>
       </Suspense>
 
