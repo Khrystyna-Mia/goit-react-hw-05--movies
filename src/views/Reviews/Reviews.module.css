@@ -10,7 +10,14 @@
   font-size: 18px;
   letter-spacing: 0.02em;
 
-  color: var(--pink);
+  color: var(--black-color);
+}
+
+.text {
+  font-size: 18px;
+  letter-spacing: 0.02em;
+
+  color: var(--secondary-text-color);
 }
 
 .content {
@@ -22,5 +29,5 @@
 }
 
 .content::first-letter {
-  margin-right: 20px;
+  margin-left: 20px;
 }
