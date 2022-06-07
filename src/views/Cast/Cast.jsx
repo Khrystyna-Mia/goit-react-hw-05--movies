@@ -25,7 +25,7 @@ const Cast = () => {
       .then(({ cast }) => {
         if (cast.length === 0) {
           Notify.failure('WE DONT HAVE ANY CAST FOR THIS MOVIES😕', {
-            position: 'center-center',
+            position: 'right-top',
             width: '500px',
             fontSize: '20px',
           });

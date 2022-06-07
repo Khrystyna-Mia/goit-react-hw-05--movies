@@ -25,7 +25,7 @@ const Reviews = () => {
       .then(({ results }) => {
         if (results.length === 0) {
           Notify.failure('WE DONT HAVE ANY REWIEWS FOR THIS MOVIES😕', {
-            position: 'center-center',
+            position: 'right-top',
             width: '500px',
             fontSize: '20px',
           });
