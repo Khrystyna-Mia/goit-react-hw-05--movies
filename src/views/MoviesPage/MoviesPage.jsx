@@ -22,7 +22,7 @@ const MoviesPage = () => {
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
-    if (!query) return;
+    if (!query.trim()) return;
     setStatus('pending');
 
     apiMovies
