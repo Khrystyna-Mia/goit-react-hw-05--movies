@@ -1,6 +1,8 @@
 .list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  text-align: center;
 
   margin-top: -30px;
   margin-left: -30px;
@@ -13,6 +15,8 @@
   flex-direction: column;
   flex-basis: calc(100% / 4 - 30px);
 
+  width: 200px;
+
   margin-top: 30px;
   margin-left: 30px;
 }
@@ -23,19 +27,20 @@
   align-content: stretch;
 
   padding: 10px;
-
-  border-radius: 6px;
 }
 
 .thumb {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.poster {
+  overflow: hidden;
 
   height: 300px;
 
   border-radius: 6px;
-  overflow: hidden;
 }
 
 .title {
