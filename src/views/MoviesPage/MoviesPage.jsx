@@ -15,14 +15,16 @@ const MoviesPage = () => {
   const navigate = useNavigate();
 
   const [query, setQuery] = useState(
-    new URLSearchParams(location.search).get('query') ?? ''
+    new URLSearchParams(location.search).get('query')
   );
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
-    if (!query.trim()) return;
+    if (!query.trim()) {
+      return;
+    }
     setStatus('pending');
 
     apiMovies
