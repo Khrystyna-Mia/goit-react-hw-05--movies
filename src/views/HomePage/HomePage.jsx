@@ -57,6 +57,7 @@ const HomePage = () => {
                           : noFoundImage
                       }
                       alt={title}
+                      className={s.poster}
                     />
                   </div>
 
