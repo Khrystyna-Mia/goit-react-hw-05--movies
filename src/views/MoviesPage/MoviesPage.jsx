@@ -22,7 +22,7 @@ const MoviesPage = () => {
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
-    if (!query.trim()) {
+    if (!query) {
       return;
     }
     setStatus('pending');
@@ -76,6 +76,7 @@ const MoviesPage = () => {
                         : noFoundImage
                     }
                     alt={title}
+                    className={s.poster}
                   />
                 </div>
 
