@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import * as apiMovies from '../../services/apiMovies';
 
@@ -12,6 +12,7 @@ import s from './MoviesPage.module.css';
 
 const MoviesPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [query, setQuery] = useState(
     new URLSearchParams(location.search).get('query') ?? ''
@@ -21,7 +22,7 @@ const MoviesPage = () => {
   const [status, setStatus] = useState('idle');
 
   useEffect(() => {
-    if (!query) return;
+    if (!query.trim()) return;
     setStatus('pending');
 
     apiMovies
@@ -45,6 +46,7 @@ const MoviesPage = () => {
   const handleFormSubmit = querySearch => {
     if (query === querySearch) return;
     setQuery(querySearch);
+    navigate({ ...location, search: `query=${querySearch}` });
   };
 
   return (
